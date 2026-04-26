@@ -1,0 +1,2 @@
+import os
+os.environ["OPENAI_API_key"] = "voc-1684036406159874451272069c22b9867a959.60074225"
