@@ -21,7 +21,7 @@ You will see files inside the `phase_1` folder arranged as follows:
 ```
 phase_1/
 ├── workflow_agents/
-│   ├── __init__.py             ← (empty)
+│   ├── __init__.py             ← (Add your openai api key here)
 │   └── base_agents.py          ← Student implementation file
 ├── direct_prompt_agent.py
 ├── augmented_prompt_agent.py
