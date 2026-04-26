@@ -35,7 +35,7 @@ phase_1/
 * `workflow_agents` is a Python package containing all your agent class definitions.
 * One script per agent to test their functionality has also been provided in the folder.
 
-**Environment Configuration:** Create a `.env` file in the `tests/` folder containing your OpenAI API key:
+**Environment Configuration:** Alternatively, create a `.env` file in the `tests/` folder containing your OpenAI API key:
 
 ```
 OPENAI_API_KEY=your_openai_api_key
