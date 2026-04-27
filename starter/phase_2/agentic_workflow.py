@@ -113,17 +113,17 @@ agents = [
     {
         "name": "Product Manager",
         "description": "Responsible for defining product personas and user stories only. Does not define features or tasks. Does not group stories",
-        "func": lambda x:product_manager_knowledge_agent.respond
+        "func": lambda x:product_manager_knowledge_agent.respond(x)
     },
     {
         "name": "Program Manager",
         "description": "Responsible for defining the features for a product. Organizes similar user stories into cohesive groups.",
-        "func": lambda x:program_manager_knowledge_agent.respond
+        "func": lambda x:program_manager_knowledge_agent.respond(x)
     },
     {
         "name": "Development Engineer",
         "description": "Responsible for defining the development tasks for a product. Development tasks are defined by identifying what needs to be built to implement each user story.",
-        "func": lambda x:development_engineer_knowledge_agent.respond
+        "func": lambda x:development_engineer_knowledge_agent.respond(x)
     }
 ]
 routing_agent = RoutingAgent(open_api_key,agents)
@@ -137,6 +137,12 @@ routing_agent = RoutingAgent(open_api_key,agents)
 def product_manager_support_function(query):
     resp = product_manager_knowledge_agent.respond(query)
     return(product_manager_evaluation_agent.evaluate(resp)["response"])
+
+    # Get initial response from product manager knowledge agent
+    response = product_manager_knowledge_agent.respond(query)
+    # Evaluate and validate the response
+    final_response = product_manager_evaluation_agent.evaluate(query, initial_response=response)
+    return final_response.get("final_response")
 
 def program_manager_support_function(query):
     resp = program_manager_knowledge_agent.respond(query)

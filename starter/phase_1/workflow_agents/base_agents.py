@@ -21,7 +21,7 @@ class DirectPromptAgent:
         client = OpenAI(base_url="https://openai.vocareum.com/v1", api_key=self.openai_api_key)
         #3 - Specify the model to use (gpt-3.5-turbo)
         response = client.chat.completions.create(
-            model="gpt-4",
+            model="gpt-3.5-turbo",
             messages=[
                 #4 - Provide the user's prompt here. Do not add a system prompt.
                 {"role":"user","content":prompt}
@@ -315,12 +315,15 @@ class EvaluationAgent:
                     f"It has been evaluated as incorrect.\n"
                     f"Make only these corrections, do not alter content validity: {instructions}"
                 )
+        
+        #7 - Return a dictionary containing the final response, evaluation, and number of iterations
+        
         return {
-            #7 - Return a dictionary containing the final response, evaluation, and number of iterations
-            "response":response,
+            "response":response_from_worker,
             "evaluation":evaluation,
             "number of iterations":i
-        }   
+        }
+
 
 
 
@@ -371,7 +374,7 @@ class RoutingAgent():
         print(f"[Router] Best agent: {best_agent['name']} (score={best_score:.3f})")
         invoke_func = best_agent["func"]
                 
-        response=  invoke_func(user_prompt)(user_prompt)
+        response=  invoke_func(user_prompt)
         print(f"\nResponse from the {best_agent['name']}:\n\n'{response}'")
         return(response)
 

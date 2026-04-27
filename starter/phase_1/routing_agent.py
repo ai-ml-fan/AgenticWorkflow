@@ -31,19 +31,19 @@ agents = [
         "name": "texas agent",
         "description": "Answer a question about Texas",
         #5 - Call the Texas Agent to respond to prompts
-        "func": lambda x: texas_knowledge_agent.respond
+        "func": lambda x: texas_knowledge_agent.respond(x)
     },
     {
         "name": "europe agent",
         "description": "Answer a question about Europe",
         #6 - Define a function to call the Europe Agent
-        "func": lambda x: eu_knowledge_agent.respond
+        "func": lambda x: eu_knowledge_agent.respond(x)
     },
     {
         "name": "math agent",
         "description": "When a prompt contains numbers, respond with a math formula",
         #7 - Define a function to call the Math Agent
-        "func": lambda x: math_knowledge_agent.respond
+        "func": lambda x: math_knowledge_agent.respond(x)
     }
 ]
 
